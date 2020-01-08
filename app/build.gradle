@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.bixolon.icpay"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 참고 URL
+    //http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.ProductFlavor.html#com.android.build.gradle.internal.dsl.ProductFlavor:applicationId
+
+    // Specifies the names of product flavor dimensions for this project.
+    flavorDimensions "bxlpaymentapp"
+
+    // Encapsulates all product flavors configurations for this project.
+    productFlavors {
+        kicc {
+            dimension 'bxlpaymentapp'
+            applicationIdSuffix ".kicc"
+            versionName "1.0.0"
+            manifestPlaceholders = [ appLabel: "KICC" ]
+            //buildConfigField 'int', 'PRODUCT_TYPE_ID', "0"
+        }
+        nice {
+            dimension 'bxlpaymentapp'
+            applicationIdSuffix ".nice"
+            manifestPlaceholders = [ appLabel: "NICE" ]
+            versionName "1.0.1"
+            //buildConfigField 'int', 'PRODUCT_TYPE_ID', "1"
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
