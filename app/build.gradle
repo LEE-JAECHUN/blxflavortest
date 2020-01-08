@@ -49,6 +49,17 @@ android {
         }
     }
 
+    sourceSets {
+        kicc {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs = ['src/kicc/res']
+        }
+        nice {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs = ['src/nice/res']
+        }
+    }
+
 }
 
 dependencies {
