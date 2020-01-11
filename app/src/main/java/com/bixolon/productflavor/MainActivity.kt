@@ -10,6 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //helloMsg.text = "HELLO BIXOLON"
+
+        when(VanSpecificInfoData.vanType()) {
+            VanTarget.NICE -> helloMsg.text = "Settings for NICE"
+            VanTarget.KICC -> helloMsg.text = "Settings for KICC"
+        }
     }
 }

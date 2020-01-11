@@ -51,10 +51,12 @@ android {
 
     sourceSets {
         kicc {
+            java.srcDirs = ['src/kicc/java']
             manifest.srcFile 'src/main/AndroidManifest.xml'
             res.srcDirs = ['src/kicc/res']
         }
         nice {
+            java.srcDirs = ['src/nice/java']
             manifest.srcFile 'src/main/AndroidManifest.xml'
             res.srcDirs = ['src/nice/res']
         }
